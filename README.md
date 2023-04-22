@@ -29,7 +29,7 @@ python mange.py makemigrations
 ```
 python mange.py migrate
 ```
-## Set the Source Key in the Authentication model, which will be used to validate whether the requests are coming from the right source or not
+Set the Source Key in the Authentication model, which will be used to validate whether the requests are coming from the right source or not
 
 ```
 python mange.py run server
