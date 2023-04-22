@@ -30,7 +30,10 @@ python mange.py makemigrations
 python mange.py migrate
 ```
 Set the Source Key in the Authentication model, which will be used to validate whether the requests are coming from the right source or not and in request header set this
+```
 X-Source-Key : <your_key>
+```
+
 
 ```
 python mange.py run server
