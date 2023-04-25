@@ -1,3 +1,6 @@
+CONTACT_NUMBER_REGEX = r'^\+?\d{1,3}?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$'
+
+
 class Action:
     CREATE = "create"
     DESTROY = "destroy"

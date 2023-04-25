@@ -12,3 +12,8 @@ class ArticleViewSet(BaseViewSet):
         Action.UPDATE: serializers.UpdateArticleSerializer,
         Action.LIST: serializers.ArticleDetailsSerializer,
     }
+
+    def get_queryset(self):
+        if self.action in [Action.LIST, Action.RETRIEVE]:
+            return self.queryset
+        return self.queryset.filter(author=self.request.user)
