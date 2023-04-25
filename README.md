@@ -25,9 +25,9 @@ For Linux or Mac
 source myenv/bin/activate
 ```
 Navigate backend project directory
-``
+```
 cd backend
-``
+```
 Install the required packages
 ```
 pip install -r requirements.txt
@@ -41,9 +41,9 @@ python manage.py makemigrations users core articles
 python manage.py migrate
 ```
 Create Superuser
-``
+```
 python manage.py createsuperuser
-``
+```
 Set the Source Key in the Authentication model(core), which will be used to validate whether the requests are coming from the right source or not
 and in request header pass 'X-Source-Key'
 ```
