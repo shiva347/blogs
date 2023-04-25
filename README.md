@@ -1,3 +1,11 @@
+# Features
+The system has the following features:
+1. Verification of Source for Pre-Login Requests: The system can identify the source of requests to ensure they are coming from authorized sources.
+2. Login and Registration APIs: Users can access the system using secure login and registration APIs.
+3. Session Token Generation: Session token based authentication
+4. CRUD Operations on Articles: Users can create, read, update, and delete articles securely.
+5. Authenticated and Authorized Articles APIs: All article APIs, except for the "GET" API, are authenticated and authorized to ensure only authorized users can access and modify them.
+
 ## Project Setup 
 Clone the repository
 ```
@@ -16,20 +24,28 @@ For Linux or Mac
 ```
 source myenv/bin/activate
 ```
-
+Navigate backend project directory
+``
+cd backend
+``
 Install the required packages
 ```
 pip install -r requirements.txt
 ```
 
 ```
-python mange.py makemigrations
+python manage.py makemigrations users core articles 
 ```
 
 ```
-python mange.py migrate
+python manage.py migrate
 ```
-Set the Source Key in the Authentication model, which will be used to validate whether the requests are coming from the right source or not and in request header set this
+Create Superuser
+``
+python manage.py createsuperuser
+``
+Set the Source Key in the Authentication model(core), which will be used to validate whether the requests are coming from the right source or not
+and in request header pass 'X-Source-Key'
 ```
 X-Source-Key : <your_key>
 ```

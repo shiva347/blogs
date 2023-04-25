@@ -1,8 +1,11 @@
+import re
+
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.authtoken.models import Token
 from .models import User
+from core.constants import CONTACT_NUMBER_REGEX
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -24,6 +27,12 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             'contact_number': {'required': True, 'allow_null': False, 'allow_blank': False,
                                'min_length': 10, 'max_length': 12}
         }
+
+    def validate_contact_number(self, value):
+        if not re.match(CONTACT_NUMBER_REGEX, value):
+            raise serializers.ValidationError("Invalid phone number")
+
+        return value
 
     def get_token_key(self, instance):
         if self.instance:
