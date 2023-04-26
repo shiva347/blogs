@@ -5,7 +5,7 @@ from articles import models, serializers
 
 
 class ArticleViewSet(BaseViewSet):
-    queryset = models.Article.objects.all()
+    model = models.Article
     permission_classes = [IsAuthenticatedOrReadOnly]
     dynamic_serializers = {
         Action.CREATE: serializers.CreateArticleSerializer,
@@ -15,5 +15,5 @@ class ArticleViewSet(BaseViewSet):
 
     def get_queryset(self):
         if self.action in [Action.LIST, Action.RETRIEVE]:
-            return self.queryset
-        return self.queryset.filter(author=self.request.user)
+            return self.model.objects.all()
+        return self.model.objects.filter(author=self.request.user)
